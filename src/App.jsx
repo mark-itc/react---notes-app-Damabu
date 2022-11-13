@@ -10,21 +10,26 @@ function App() {
     setNotes(data);
   }, []);
 
-  function createNote(noteTitle) {
+  function createNote(note) {
     setNotes([
       ...notes,
       {
-        title: noteTitle,
+        date: note.date,
+        title: note.title,
         id: notes.length,
       },
     ]);
+  }
+
+  function deleteNote(noteId) {
+    setNotes(notes.filter((note) => note.id !== noteId));
   }
 
   return (
     <main className="h-screen">
       <div className="container mx-auto">
         <NoteForm createNote={createNote} />
-        <NoteList notes={notes} />
+        <NoteList notes={notes} deleteNote={deleteNote} />
       </div>
     </main>
   );
