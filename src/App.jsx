@@ -15,7 +15,7 @@ function App() {
       ...notes,
       {
         date: note.date,
-        title: note.title,
+        title: note.title + " " + (notes.length + 1),
         id: notes.length,
       },
     ]);

@@ -6,7 +6,7 @@ function NoteCard({ note, deleteNote }) {
   };
 
   return (
-    <div className="border border-gray-200 p-4 rounded-md">
+    <div className=" mx-auto border border-gray-200 p-4 rounded-md">
       <div className=" flex items-center ">
         <h2 className="text-gray-400 text-xs">{note.date}</h2>
         <button className="font-extrabold mx-2" 
