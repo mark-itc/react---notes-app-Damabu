@@ -11,11 +11,13 @@ function App() {
   }, []);
 
   function createNote(note) {
+    
     setNotes([
       ...notes,
       {
         date: note.date,
         title: note.title + " " + (notes.length + 1),
+        description: note.description,
         id: notes.length,
       },
     ]);
