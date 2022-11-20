@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DateComponent from "./DateComponent";
 
 function NoteForm({ createNote }) {
   const [title, setTitle] = useState("");
@@ -23,7 +24,6 @@ function NoteForm({ createNote }) {
     setTitle("");
     setDescription("");
   };
-
 
 
 
