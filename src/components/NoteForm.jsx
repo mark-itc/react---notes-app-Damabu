@@ -27,7 +27,17 @@ function NoteForm({ createNote }) {
 
 
 
+  const onKey = (e) => {
+    console.log("Hola");
+    
+    const textarea = document.querySelector("textarea")
+    textarea.style.height = "30px";
+    
+    let scrollHeight = e.target.scrollHeight;
+    textarea.style.height = `${scrollHeight}px`;
 
+    console.log(scrollHeight);
+  };
 
   console.log(description.length);
 
@@ -45,6 +55,7 @@ function NoteForm({ createNote }) {
           className="text-area"
           value={description}
           placeholder="Description"
+          onKeyDown={(e) => onKey(e)}
           onChange={(e) => {
             setDescription(e.target.value)}}
         ></textarea>
