@@ -16,7 +16,7 @@ function App() {
       ...notes,
       {
         date: note.date,
-        title: note.title + " " + (notes.length + 1),
+        title: note.title,
         description: note.description,
         id: notes.length,
       },
