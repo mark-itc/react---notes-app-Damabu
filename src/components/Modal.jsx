@@ -1,32 +1,34 @@
-const Modal = ({ setModalOn }) => {
-    const handleCancelClick = () => {
-      console.log(Modal);
-      setModalOn(false);
-    };
-  
-    return (
-      <div className=" bg-gray-700 opacity-80 fixed inset-0 z-50   ">
-        <div className="flex h-screen justify-center items-center ">
-          <div className=" opacity- flex-col justify-center  bg-white py-12 px-24 rounded-xl mx-auto border border-gray-200 bg-white p-4 rounded-md">
-            <div className=" flex items-center justify-center ">
-              <h2 className="text-gray-400 text-xs">Date Info</h2>
-              <button
-                className="font-extrabold ml-3 mb-2"
-                onClick={handleCancelClick}
-              >
-                X
-              </button>
-            </div>
-            <div className="cursor-pointer">
-              <h1 className="capitalize flex justify-center font-bold">
-                Note Title
-              </h1>
-              <p className="flex justify-center">Description</p>
-            </div>
-          </div>
-        </div>
+const Modal = ({ date, title, description, close }) => {
+
+  return (
+    <div
+    className="flex h-screen justify-center items-center fixed inset-0 z-50 border border-gray-200 rounded-md"
+  >
+    <div 
+    className="p-0 opacity- flex-col justify-center mx-auto border border-gray-200 bg-white rounded-md"
+    onClick={(e) => e.stopPropagation()}
+    >
+    <div className="pt-0 flex justify-end">
+      <div className=" pt-1 w-9 h-8" onClick={(e) => e.stopPropagation()}>
+        <button
+          className="grid justify-center content-center font-extrabold w-0 h-8 bg-white text-gray-700 rounded-md px-4 transition duration-500 ease select-none hover:bg-black hover:text-white focus:outline-none focus:shadow-outlin"
+          onClick={close}
+        >
+          X
+        </button>
       </div>
-    );
-  };
-  
-  export default Modal;
+    </div>
+    <div className=" p-4 pt-1">
+      <h2 className="text-gray-400 text-xs">{date.props.children}</h2>
+
+      <h1 className="capitalize flex justify-center font-bold">
+        {title}
+      </h1>
+      <p className="flex justify-center">{description}</p>
+    </div>
+    </div>
+    </div>
+  );
+};
+
+export default Modal;
