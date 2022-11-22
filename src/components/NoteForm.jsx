@@ -1,58 +1,60 @@
 import { useState } from "react";
 import DateComponent from "./DateComponent";
 
-function NoteForm({ createNote }) {
+function NoteForm({ allStatesApp }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
-  const [scrollHeight, setScrollHeight] = useState("");
+
+  const { notes, setNotes } = allStatesApp
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const { children:date } = DateComponent().props
+
     const data = {
+      date,
       title,
       description,
     };
 
-    createNote({
-      date,
-      title,
-      description,
-    });
+    const newNote =[...notes, data]
+    
+    setNotes(newNote)
 
     setTitle("");
-    setDescription("");
+    setDescription("")
+
   };
 
 
 
   const onKey = (e) => {
-    console.log("Hola");
     
     const textarea = document.querySelector("textarea")
-    textarea.style.height = "30px";
+    textarea.style.height = "70px";
     
     let scrollHeight = e.target.scrollHeight;
     textarea.style.height = `${scrollHeight}px`;
 
-    console.log(scrollHeight);
+    
   };
 
-  console.log(description.length);
+  
 
   return (
-    <div className="max-w-md mx-auto">
-      <form className="form-note" onSubmit={handleSubmit}>
+    <div className="max-w-md mx-auto my-5 border border-gray-200 rounded-md">
+      <form className="relativeform-note flex-col" onSubmit={handleSubmit}>
         <input
+          className=" border border-gray-200 rounded-md m-5 px-4 py-2 flex items-center justify-center w-96 mx-auto"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          style={{ height: `${scrollHeight}px`}}
-          className="text-area"
+          
+          className="height: `${scrollHeight}px` border border-gray-200 rounded-md m-5 px-4 py-2 resize-none overflow-hidden flex items-center justify-center w-96 mx-auto"
           value={description}
           placeholder="Description"
           onKeyDown={(e) => onKey(e)}
@@ -61,17 +63,18 @@ function NoteForm({ createNote }) {
         ></textarea>
         <button
           type="submit"
-          className="flex items-center justify-center font-bold mx-auto w-96 my-10 border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-black hover:text-white focus:outline-none focus:shadow-outline"
+          className=" disabled:hover:bg-red-500  flex items-center justify-center font-bold mx-auto w-96 my-10 border border-gray-200 bg-gray-200 text-gray-700 rounded-md py-2 transition duration-500 ease select-none hover:bg-black hover:text-white focus:outline-none focus:shadow-outline"
           onClick={() => {
             setTitle(title);
             setDescription(description);
-            setDate(DateComponent);
           }}
-          disabled={ description.length > 1 ? false : true }
+          disabled={ description.length >= 1 ? false : true }
           style={{  }}
+          alt="mammals"
         >
           Add
         </button>
+       
       </form>
     </div>
   );

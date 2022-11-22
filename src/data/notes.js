@@ -1,1 +1,1 @@
-export const notes = (date, title, description, id) => []
+export const notes = (date, title, description, id, updateDate) => []
