@@ -1,10 +1,7 @@
-
 import React from "react";
 
-
 function NoteCard({ note, deleteNote, id, allStatesApp }) {
-
-  const { modalOn, setModalOn, setNoteModal } = allStatesApp
+  const { modalOn, setModalOn, setNoteModal } = allStatesApp;
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete your note?")) {
@@ -12,17 +9,15 @@ function NoteCard({ note, deleteNote, id, allStatesApp }) {
     }
   };
 
-  note.id = id
-
-
-  
+  note.id = id;
 
   return (
     <>
       <div
-        onClick={() => { 
-          setNoteModal(note)
-          setModalOn(!modalOn) }}
+        onClick={() => {
+          setNoteModal(note);
+          setModalOn(!modalOn);
+        }}
         className="cursor-pointer border border-gray-200 p-0 rounded-md"
       >
         <div className=" flex justify-end">
@@ -37,14 +32,17 @@ function NoteCard({ note, deleteNote, id, allStatesApp }) {
         </div>
         <div className=" p-4 pt-0">
           <h2 className="text-gray-400 text-xs">Created on: {note.date}</h2>
-          { note.updateDate && <h2 className="text-gray-400 text-xs">Modificated on: {note.updateDate}</h2> }          
+          {note.updateDate && (
+            <h2 className="text-gray-400 text-xs">
+              Modificated on: {note.updateDate}
+            </h2>
+          )}
           <h1 className="capitalize flex justify-center font-bold">
             {note.title}
           </h1>
           <p className="flex justify-center">{note.description}</p>
         </div>
-        </div>
-
+      </div>
     </>
   );
 }

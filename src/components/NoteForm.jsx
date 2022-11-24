@@ -1,3 +1,4 @@
+import localforage from "localforage";
 import { useState } from "react";
 import DateComponent from "./DateComponent";
 
@@ -5,12 +6,12 @@ function NoteForm({ allStatesApp }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const { notes, setNotes } = allStatesApp
+  const { notes, setNotes } = allStatesApp;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { children:date } = DateComponent().props
+    const { children: date } = DateComponent().props;
 
     const data = {
       date,
@@ -18,29 +19,23 @@ function NoteForm({ allStatesApp }) {
       description,
     };
 
-    const newNote =[...notes, data]
-    
-    setNotes(newNote)
+    const newNote = [...notes, data];
+
+    setNotes(newNote);
 
     setTitle("");
-    setDescription("")
+    setDescription("");
 
+    localforage.setItem("data", newNote);
   };
-
-
 
   const onKey = (e) => {
-    
-    const textarea = document.querySelector("textarea")
+    const textarea = document.querySelector("textarea");
     textarea.style.height = "70px";
-    
+
     let scrollHeight = e.target.scrollHeight;
     textarea.style.height = `${scrollHeight}px`;
-
-    
   };
-
-  
 
   return (
     <div className="max-w-md mx-auto my-5 border border-gray-200 rounded-md">
@@ -53,13 +48,13 @@ function NoteForm({ allStatesApp }) {
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          
           className="height: `${scrollHeight}px` border border-gray-200 rounded-md m-5 px-4 py-2 resize-none overflow-hidden flex items-center justify-center w-96 mx-auto"
           value={description}
           placeholder="Description"
           onKeyDown={(e) => onKey(e)}
           onChange={(e) => {
-            setDescription(e.target.value)}}
+            setDescription(e.target.value);
+          }}
         ></textarea>
         <button
           type="submit"
@@ -68,13 +63,12 @@ function NoteForm({ allStatesApp }) {
             setTitle(title);
             setDescription(description);
           }}
-          disabled={ description.length >= 1 ? false : true }
-          style={{  }}
+          disabled={description.length >= 1 ? false : true}
+          style={{}}
           alt="mammals"
         >
           Add
         </button>
-       
       </form>
     </div>
   );
