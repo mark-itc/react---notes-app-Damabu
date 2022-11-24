@@ -58,7 +58,7 @@ const Modal = ({ updateDate, close, note, allStatesApp }) => {
             }}
           />
           <textarea
-            className="flex justify-center font-bold"
+            className="flex justify-center font-bold resize-none"
             value={descriptionEdit}
             onChange={(e) => {
               setDescriptionEdit(e.target.value);

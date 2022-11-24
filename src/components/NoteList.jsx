@@ -6,7 +6,7 @@ function NoteList({ notes, deleteNote, allStatesApp }) {
   }
   
   return (
-    <div className="grid grid-cols-5 gap-2">
+    <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1 justify-center">
       {notes.map((note, index) => (
         <NoteCard key={index} note={notes[index]} id={index} deleteNote={deleteNote} allStatesApp={allStatesApp} />
       ))}

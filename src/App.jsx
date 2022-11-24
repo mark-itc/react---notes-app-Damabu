@@ -32,6 +32,8 @@ function App() {
   function deleteNote(noteId) {
     setNotes(notes.filter((note) => note.id !== noteId));
   }
+  
+  localforage.setItem("data", notes);
 
   return (
     <main className="h-screen">

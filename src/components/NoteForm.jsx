@@ -41,14 +41,14 @@ function NoteForm({ allStatesApp }) {
     <div className="max-w-md mx-auto my-5 border border-gray-200 rounded-md">
       <form className="relativeform-note flex-col" onSubmit={handleSubmit}>
         <input
-          className=" border border-gray-200 rounded-md m-5 px-4 py-2 flex items-center justify-center w-96 mx-auto"
+          className=" border border-gray-200 rounded-md m-5 px-4 py-2 flex items-center justify-center w-72 mx-auto"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          className="height: `${scrollHeight}px` border border-gray-200 rounded-md m-5 px-4 py-2 resize-none overflow-hidden flex items-center justify-center w-96 mx-auto"
+          className="height: `${scrollHeight}px` border border-gray-200 rounded-md m-5 px-4 py-2 resize-none overflow-hidden flex items-center justify-center w-72 mx-auto"
           value={description}
           placeholder="Description"
           onKeyDown={(e) => onKey(e)}
@@ -58,7 +58,7 @@ function NoteForm({ allStatesApp }) {
         ></textarea>
         <button
           type="submit"
-          className=" disabled:hover:bg-red-500  flex items-center justify-center font-bold mx-auto w-96 my-10 border border-gray-200 bg-gray-200 text-gray-700 rounded-md py-2 transition duration-500 ease select-none hover:bg-black hover:text-white focus:outline-none focus:shadow-outline"
+          className=" disabled:hover:bg-gray-200  disabled:hover:border-gray-200 valid:bg-white valid:border-black valid:text-black  disabled:hover:text-gray-400 flex items-center justify-center font-bold mx-auto w-72 my-10 border border-gray-200 bg-gray-200 text-gray-400 rounded-md py-2 transition duration-500 ease select-none hover:bg-black hover:text-white focus:outline-none focus:shadow-outline"
           onClick={() => {
             setTitle(title);
             setDescription(description);

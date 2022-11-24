@@ -18,7 +18,7 @@ function NoteCard({ note, deleteNote, id, allStatesApp }) {
           setNoteModal(note);
           setModalOn(!modalOn);
         }}
-        className="cursor-pointer border border-gray-200 p-0 rounded-md"
+        className="cursor-pointer border border-gray-200 p-0 rounded-md w-auto"
       >
         <div className=" flex justify-end">
           <div className=" pt-1 w-9 h-8" onClick={(e) => e.stopPropagation()}>
@@ -31,16 +31,16 @@ function NoteCard({ note, deleteNote, id, allStatesApp }) {
           </div>
         </div>
         <div className=" p-4 pt-0">
-          <h2 className="text-gray-400 text-xs">Created on: {note.date}</h2>
-          {note.updateDate && (
-            <h2 className="text-gray-400 text-xs">
-              Modificated on: {note.updateDate}
-            </h2>
-          )}
           <h1 className="capitalize flex justify-center font-bold">
             {note.title}
           </h1>
-          <p className="flex justify-center">{note.description}</p>
+          <p className="flex justify-center mb-2">{note.description}</p>
+          <h2 className="text-gray-400 text-xs">Created on: {note.date}</h2>
+          {note.updateDate && (
+            <h2 className="text-gray-400 text-xs">
+              Modified on: {note.updateDate}
+            </h2>
+          )}
         </div>
       </div>
     </>
